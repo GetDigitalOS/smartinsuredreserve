@@ -274,7 +274,7 @@ const InsuranceOptimizer: React.FC = () => {
             <div className="mt-3 text-sm text-gray-600">
               <p><span className="inline-block w-4 h-4 bg-yellow-400 mr-2"></span><strong>Proposed:</strong> Premium with optimized deductibles</p>
               <p><span className="inline-block w-4 h-4 bg-green-300 mr-2"></span><strong>Recaptured Premium:</strong> Savings redirected to reserve</p>
-              <p><span className="inline-block w-4 h-3 bg-blue-900 mr-2"></span><strong>Current:</strong> What you'd pay with current deductibles</p>
+              <p><span className="inline-block w-4 h-3 bg-blue-900 mr-2"></span><strong>Current:</strong> What you&apos;d pay with current deductibles</p>
               <p><span className="inline-block w-4 h-3 bg-gray-500 mr-2"></span><strong>Smart Insured Reserve:</strong> Growing reserve balance</p>
             </div>
           </div>
