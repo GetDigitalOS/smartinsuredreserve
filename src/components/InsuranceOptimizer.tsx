@@ -113,7 +113,7 @@ const InsuranceOptimizer: React.FC = () => {
   }));
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-6">
+    <main id="main-content" className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-6">
       <div className="max-w-7xl mx-auto">
         <div className="bg-white rounded-xl shadow-xl p-4 sm:p-8 mb-6">
           <div className="flex items-center gap-3 mb-2">
@@ -130,24 +130,24 @@ const InsuranceOptimizer: React.FC = () => {
               </h3>
               <div className="space-y-3">
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Annual Premium ($250 deductible)</label>
-                  <input type="number" value={inputs.autoPremium250} onChange={(e) => handleInputChange('autoPremium250', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="autoPremium250" className="text-sm font-medium text-gray-700">Annual Premium ($250 deductible)</label>
+                  <input id="autoPremium250" type="number" value={inputs.autoPremium250} onChange={(e) => handleInputChange('autoPremium250', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Annual Premium ($500 deductible)</label>
-                  <input type="number" value={inputs.autoPremium500} onChange={(e) => handleInputChange('autoPremium500', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="autoPremium500" className="text-sm font-medium text-gray-700">Annual Premium ($500 deductible)</label>
+                  <input id="autoPremium500" type="number" value={inputs.autoPremium500} onChange={(e) => handleInputChange('autoPremium500', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Annual Premium ($1,000 deductible)</label>
-                  <input type="number" value={inputs.autoPremium1000} onChange={(e) => handleInputChange('autoPremium1000', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="autoPremium1000" className="text-sm font-medium text-gray-700">Annual Premium ($1,000 deductible)</label>
+                  <input id="autoPremium1000" type="number" value={inputs.autoPremium1000} onChange={(e) => handleInputChange('autoPremium1000', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Premium Inflation Rate (%)</label>
-                  <input type="number" step="0.1" value={inputs.autoInflation} onChange={(e) => handleInputChange('autoInflation', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="autoInflation" className="text-sm font-medium text-gray-700">Premium Inflation Rate (%)</label>
+                  <input id="autoInflation" type="number" step="0.1" value={inputs.autoInflation} onChange={(e) => handleInputChange('autoInflation', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Current Deductible</label>
-                  <select value={inputs.autoCurrentDeductible} onChange={(e) => handleInputChange('autoCurrentDeductible', e.target.value)} className="w-full p-2 border rounded mt-1">
+                  <label htmlFor="autoCurrentDeductible" className="text-sm font-medium text-gray-700">Current Deductible</label>
+                  <select id="autoCurrentDeductible" value={inputs.autoCurrentDeductible} onChange={(e) => handleInputChange('autoCurrentDeductible', e.target.value)} className="w-full p-2 border rounded mt-1">
                     <option value={250}>$250</option>
                     <option value={500}>$500</option>
                     <option value={1000}>$1,000</option>
@@ -163,24 +163,24 @@ const InsuranceOptimizer: React.FC = () => {
               </h3>
               <div className="space-y-3">
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Annual Premium ($500 deductible)</label>
-                  <input type="number" value={inputs.homePremium500} onChange={(e) => handleInputChange('homePremium500', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="homePremium500" className="text-sm font-medium text-gray-700">Annual Premium ($500 deductible)</label>
+                  <input id="homePremium500" type="number" value={inputs.homePremium500} onChange={(e) => handleInputChange('homePremium500', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Annual Premium ($1,000 deductible)</label>
-                  <input type="number" value={inputs.homePremium1000} onChange={(e) => handleInputChange('homePremium1000', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="homePremium1000" className="text-sm font-medium text-gray-700">Annual Premium ($1,000 deductible)</label>
+                  <input id="homePremium1000" type="number" value={inputs.homePremium1000} onChange={(e) => handleInputChange('homePremium1000', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Annual Premium ($5,000 deductible)</label>
-                  <input type="number" value={inputs.homePremium5000} onChange={(e) => handleInputChange('homePremium5000', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="homePremium5000" className="text-sm font-medium text-gray-700">Annual Premium ($5,000 deductible)</label>
+                  <input id="homePremium5000" type="number" value={inputs.homePremium5000} onChange={(e) => handleInputChange('homePremium5000', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Premium Inflation Rate (%)</label>
-                  <input type="number" step="0.1" value={inputs.homeInflation} onChange={(e) => handleInputChange('homeInflation', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="homeInflation" className="text-sm font-medium text-gray-700">Premium Inflation Rate (%)</label>
+                  <input id="homeInflation" type="number" step="0.1" value={inputs.homeInflation} onChange={(e) => handleInputChange('homeInflation', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Current Deductible</label>
-                  <select value={inputs.homeCurrentDeductible} onChange={(e) => handleInputChange('homeCurrentDeductible', e.target.value)} className="w-full p-2 border rounded mt-1">
+                  <label htmlFor="homeCurrentDeductible" className="text-sm font-medium text-gray-700">Current Deductible</label>
+                  <select id="homeCurrentDeductible" value={inputs.homeCurrentDeductible} onChange={(e) => handleInputChange('homeCurrentDeductible', e.target.value)} className="w-full p-2 border rounded mt-1">
                     <option value={500}>$500</option>
                     <option value={1000}>$1,000</option>
                     <option value={5000}>$5,000</option>
@@ -196,20 +196,20 @@ const InsuranceOptimizer: React.FC = () => {
               </h3>
               <div className="space-y-3">
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Current Reserve Balance ($)</label>
-                  <input type="number" value={inputs.currentReserve} onChange={(e) => handleInputChange('currentReserve', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="currentReserve" className="text-sm font-medium text-gray-700">Current Reserve Balance ($)</label>
+                  <input id="currentReserve" type="number" value={inputs.currentReserve} onChange={(e) => handleInputChange('currentReserve', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Expected Annual Return (%)</label>
-                  <input type="number" step="0.1" value={inputs.reserveReturn} onChange={(e) => handleInputChange('reserveReturn', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="reserveReturn" className="text-sm font-medium text-gray-700">Expected Annual Return (%)</label>
+                  <input id="reserveReturn" type="number" step="0.1" value={inputs.reserveReturn} onChange={(e) => handleInputChange('reserveReturn', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Annual Contribution ($)</label>
-                  <input type="number" value={inputs.reserveContribution} onChange={(e) => handleInputChange('reserveContribution', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <label htmlFor="reserveContribution" className="text-sm font-medium text-gray-700">Annual Contribution ($)</label>
+                  <input id="reserveContribution" type="number" value={inputs.reserveContribution} onChange={(e) => handleInputChange('reserveContribution', e.target.value)} className="w-full p-2 border rounded mt-1" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Years to Project</label>
-                  <input type="number" value={inputs.years} onChange={(e) => handleInputChange('years', e.target.value)} className="w-full p-2 border rounded mt-1" min={1} max={50} />
+                  <label htmlFor="years" className="text-sm font-medium text-gray-700">Years to Project</label>
+                  <input id="years" type="number" value={inputs.years} onChange={(e) => handleInputChange('years', e.target.value)} className="w-full p-2 border rounded mt-1" min={1} max={50} />
                 </div>
                 <div className="bg-purple-200 p-3 rounded mt-3">
                   <div className="flex items-start gap-2">
@@ -221,7 +221,7 @@ const InsuranceOptimizer: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" aria-live="polite">
             <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-4 rounded-lg shadow-lg">
               <div className="flex items-center gap-2 mb-1">
                 <DollarSign className="w-5 h-5" />
@@ -257,6 +257,7 @@ const InsuranceOptimizer: React.FC = () => {
 
           <div className="mb-6 bg-white p-4 rounded-lg border">
             <h3 className="font-semibold text-xl mb-4 text-gray-800">SmartInsured Reserve Strategy</h3>
+            <div role="img" aria-label="Chart showing projected insurance premiums and reserve balance over time. Data is also available in the year-by-year analysis table below.">
             <ResponsiveContainer width="100%" height={400}>
               <ComposedChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -271,10 +272,11 @@ const InsuranceOptimizer: React.FC = () => {
                 <Line yAxisId="left" type="monotone" dataKey="Current" stroke="#1e3a8a" strokeWidth={2} dot={false} />
               </ComposedChart>
             </ResponsiveContainer>
+            </div>
             <div className="mt-3 text-sm text-gray-600">
               <p><span className="inline-block w-4 h-4 bg-yellow-400 mr-2"></span><strong>Proposed:</strong> Premium with optimized deductibles</p>
               <p><span className="inline-block w-4 h-4 bg-green-300 mr-2"></span><strong>Recaptured Premium:</strong> Savings redirected to reserve</p>
-              <p><span className="inline-block w-4 h-3 bg-blue-900 mr-2"></span><strong>Current:</strong> What you&apos;d pay with current deductibles</p>
+              <p><span className="inline-block w-4 h-3 bg-blue-900 mr-2"></span><strong>Current:</strong> What you'd pay with current deductibles</p>
               <p><span className="inline-block w-4 h-3 bg-gray-500 mr-2"></span><strong>Smart Insured Reserve:</strong> Growing reserve balance</p>
             </div>
           </div>
@@ -326,7 +328,7 @@ const InsuranceOptimizer: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
