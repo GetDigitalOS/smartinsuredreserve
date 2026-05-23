@@ -1,3 +1,14 @@
+---
+version: "v1.01.01"
+owner: "@getdigital2020"
+review_cadence: quarterly
+derived_from: ["project-hub"]
+confidence: high
+validation_count: 15
+staleness_condition: "Re-examine if: ADR tooling or format standards change in the ecosystem; 2+ projects find the current format insufficient to capture their decision types; Technology Selection Principles in the universal framework change."
+last_validated: 2026-03-12
+---
+
 # Architecture Decision Record
 
 Create an ADR documenting: $ARGUMENTS

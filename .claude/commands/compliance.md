@@ -1,14 +1,26 @@
+---
+version: "v1.02.01"
+owner: "@getdigital2020"
+review_cadence: quarterly
+derived_from: ["project-hub"]
+confidence: established
+validation_count: 34
+staleness_condition: "Re-examine if: Universal Web Development Principles v2 changes principles or adds/removes tiers; compliance report outputs consistently misalign with actual production quality; a new cross-cutting concern category is added to the principles framework; Project Hub registry schema changes."
+last_validated: 2026-03-25
+---
+
 # Compliance Check
 
 Audit this project against its tier's principles from the Universal Web Development Principles v2 framework.
 
 ## Instructions
 
-1. Read `docs/architecture/PROJECT_CLASSIFICATION.md` to determine the tier.
-2. Read the Universal Web Development Principles v2 document.
-3. Examine the actual codebase to evaluate compliance against EVERY principle for this tier and all tiers below it.
-4. Also check active cross-cutting concerns (Privacy, AI, Design System, Dependencies).
-5. Produce the compliance report below.
+1. Determine the project tier: look for `docs/architecture/PROJECT_CLASSIFICATION.md` — if it exists, read it. If not, run `/classify` to classify the project first, then proceed.
+2. **Verify Project Hub registration:** Read `C:/dev/project-hub/registry/projects.json` and check if the current project's path exists in the projects array. If not registered, add a **Critical** gap to the report: "Project not registered in Project Hub — run `/scaffold` to register." If registered, update `last_audited` to today's date and commit.
+3. Read the Universal Web Development Principles v2 document.
+4. Examine the actual codebase to evaluate compliance against EVERY principle for this tier and all tiers below it.
+5. Also check active cross-cutting concerns (Privacy, AI, Design System, Dependencies).
+6. Produce the compliance report below.
 
 ## Evaluation Method
 
@@ -85,6 +97,13 @@ Generate a compliance report as `docs/architecture/COMPLIANCE_REPORT.md`:
 
 ### Cross-Cutting: Dependency Management
 [Run npm audit, check lock files committed, evaluate dependency count]
+
+### Cross-Cutting: Project Hub Registration
+- ✅/❌ **Registered in Project Hub** — Check `C:/dev/project-hub/registry/projects.json` for this project's path
+- ✅/❌ **Tier matches classification** — Registry tier should match `PROJECT_CLASSIFICATION.md`
+- ✅/❌ **Git remote configured** — Registry has a `git_remote` value
+- ✅/❌ **Dev port assigned** — Registry has a `dev_port` in the company's range
+- ✅/❌ **Status is current** — Registry `status` reflects actual project state
 
 ## Recommendations (Prioritized)
 
