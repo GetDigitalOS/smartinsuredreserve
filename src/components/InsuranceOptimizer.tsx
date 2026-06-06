@@ -4,6 +4,7 @@ import { Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ComposedChart,
 import { calculateProjection } from '../lib/projection';
 import { validateProjectionInputs } from '../lib/validation';
 import ScenarioPanel from './ScenarioPanel';
+import ProjectionTable from './ProjectionTable';
 import type { ProjectionInputs, ProjectionRow } from '../lib/types';
 
 const FieldError: React.FC<{ id: string; message?: string }> = ({ id, message }) =>
@@ -234,39 +235,7 @@ const InsuranceOptimizer: React.FC = () => {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
-            <h3 className="font-semibold text-xl mb-4 text-gray-800">Year-by-Year Analysis</h3>
-            <div className="max-h-96 overflow-y-auto border rounded-lg">
-              <table className="w-full text-xs sm:text-sm">
-                <thead className="bg-gray-100 sticky top-0">
-                  <tr>
-                    <th className="p-2 text-left border-b">Year</th>
-                    <th className="p-2 text-center border-b bg-blue-50">Auto Ded.</th>
-                    <th className="p-2 text-center border-b bg-green-50">Home Ded.</th>
-                    <th className="p-2 text-right border-b bg-yellow-50">Proposed</th>
-                    <th className="p-2 text-right border-b bg-blue-50">Current</th>
-                    <th className="p-2 text-right border-b bg-green-50">Recaptured</th>
-                    <th className="p-2 text-right border-b bg-purple-50">Reserve Begin</th>
-                    <th className="p-2 text-right border-b bg-purple-50">Reserve End</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {calculations.map((row, idx) => (
-                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                      <td className="p-2 border-b font-semibold">{row.year}</td>
-                      <td className="p-2 border-b text-center bg-blue-50">${row.autoDeductible}</td>
-                      <td className="p-2 border-b text-center bg-green-50">${row.homeDeductible.toLocaleString()}</td>
-                      <td className="p-2 border-b text-right bg-yellow-50">${row.proposedPremium.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
-                      <td className="p-2 border-b text-right bg-blue-50">${row.currentPremium.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
-                      <td className="p-2 border-b text-right bg-green-50 font-semibold">${row.recapturedPremium.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
-                      <td className="p-2 border-b text-right bg-purple-50">${row.beginningReserve.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
-                      <td className="p-2 border-b text-right bg-purple-50 font-semibold">${row.smartInsuredReserve.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <ProjectionTable rows={calculations} />
 
           <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
             <h4 className="font-semibold text-blue-900 mb-2">How This Strategy Works:</h4>
