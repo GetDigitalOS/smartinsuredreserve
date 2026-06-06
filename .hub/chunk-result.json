@@ -1,1 +1,1 @@
-{"status":"done","notes":"Extracted projection engine into src/lib/projection.ts with ProjectionInputs/ProjectionRow types; added 6 unit tests; npm test exits 0."}
+{"status":"done","notes":"Replaced calculator.ts scaffold with applyInflation/computePremiumSavings/compoundReserve and added 9 tests; npm test passes."}
