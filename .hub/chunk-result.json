@@ -1,1 +1,1 @@
-{"status":"done","notes":"Replaced calculator.ts scaffold with applyInflation/computePremiumSavings/compoundReserve and added 9 tests; npm test passes."}
+{"status":"done","notes":"Added src/lib/validation.ts with validateProjectionInputs, wired inline FieldError into InsuranceOptimizer.tsx, added tests/validation.test.ts (5/5 pass, npm test green)."}

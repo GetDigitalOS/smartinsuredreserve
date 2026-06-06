@@ -2,7 +2,15 @@ import React, { useState, useMemo } from 'react';
 import { Shield, TrendingUp, DollarSign, AlertCircle } from 'lucide-react';
 import { Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ComposedChart, ResponsiveContainer } from 'recharts';
 import { calculateProjection } from '../lib/projection';
+import { validateProjectionInputs } from '../lib/validation';
 import type { ProjectionInputs, ProjectionRow } from '../lib/types';
+
+const FieldError: React.FC<{ id: string; message?: string }> = ({ id, message }) =>
+  message ? (
+    <p id={id} className="mt-1 text-xs text-red-600" role="alert">
+      {message}
+    </p>
+  ) : null;
 
 const InsuranceOptimizer: React.FC = () => {
   const [inputs, setInputs] = useState<ProjectionInputs>({
@@ -29,6 +37,7 @@ const InsuranceOptimizer: React.FC = () => {
     setInputs((prev) => ({ ...prev, [field]: parseFloat(value) || 0 }));
   };
 
+  const validation = useMemo(() => validateProjectionInputs(inputs), [inputs]);
   const calculations = useMemo<ProjectionRow[]>(() => calculateProjection(inputs), [inputs]);
 
   const finalYear = calculations[calculations.length - 1];
@@ -61,19 +70,23 @@ const InsuranceOptimizer: React.FC = () => {
               <div className="space-y-3">
                 <div>
                   <label htmlFor="autoPremium250" className="text-sm font-medium text-gray-700">Annual Premium ($250 deductible)</label>
-                  <input id="autoPremium250" type="number" value={inputs.autoPremium250} onChange={(e) => handleInputChange('autoPremium250', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="autoPremium250" type="number" value={inputs.autoPremium250} onChange={(e) => handleInputChange('autoPremium250', e.target.value)} aria-invalid={!!validation.errors.autoPremium250} aria-describedby={validation.errors.autoPremium250 ? 'autoPremium250-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="autoPremium250-error" message={validation.errors.autoPremium250} />
                 </div>
                 <div>
                   <label htmlFor="autoPremium500" className="text-sm font-medium text-gray-700">Annual Premium ($500 deductible)</label>
-                  <input id="autoPremium500" type="number" value={inputs.autoPremium500} onChange={(e) => handleInputChange('autoPremium500', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="autoPremium500" type="number" value={inputs.autoPremium500} onChange={(e) => handleInputChange('autoPremium500', e.target.value)} aria-invalid={!!validation.errors.autoPremium500} aria-describedby={validation.errors.autoPremium500 ? 'autoPremium500-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="autoPremium500-error" message={validation.errors.autoPremium500} />
                 </div>
                 <div>
                   <label htmlFor="autoPremium1000" className="text-sm font-medium text-gray-700">Annual Premium ($1,000 deductible)</label>
-                  <input id="autoPremium1000" type="number" value={inputs.autoPremium1000} onChange={(e) => handleInputChange('autoPremium1000', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="autoPremium1000" type="number" value={inputs.autoPremium1000} onChange={(e) => handleInputChange('autoPremium1000', e.target.value)} aria-invalid={!!validation.errors.autoPremium1000} aria-describedby={validation.errors.autoPremium1000 ? 'autoPremium1000-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="autoPremium1000-error" message={validation.errors.autoPremium1000} />
                 </div>
                 <div>
                   <label htmlFor="autoInflation" className="text-sm font-medium text-gray-700">Premium Inflation Rate (%)</label>
-                  <input id="autoInflation" type="number" step="0.1" value={inputs.autoInflation} onChange={(e) => handleInputChange('autoInflation', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="autoInflation" type="number" step="0.1" value={inputs.autoInflation} onChange={(e) => handleInputChange('autoInflation', e.target.value)} aria-invalid={!!validation.errors.autoInflation} aria-describedby={validation.errors.autoInflation ? 'autoInflation-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="autoInflation-error" message={validation.errors.autoInflation} />
                 </div>
                 <div>
                   <label htmlFor="autoCurrentDeductible" className="text-sm font-medium text-gray-700">Current Deductible</label>
@@ -94,19 +107,23 @@ const InsuranceOptimizer: React.FC = () => {
               <div className="space-y-3">
                 <div>
                   <label htmlFor="homePremium500" className="text-sm font-medium text-gray-700">Annual Premium ($500 deductible)</label>
-                  <input id="homePremium500" type="number" value={inputs.homePremium500} onChange={(e) => handleInputChange('homePremium500', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="homePremium500" type="number" value={inputs.homePremium500} onChange={(e) => handleInputChange('homePremium500', e.target.value)} aria-invalid={!!validation.errors.homePremium500} aria-describedby={validation.errors.homePremium500 ? 'homePremium500-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="homePremium500-error" message={validation.errors.homePremium500} />
                 </div>
                 <div>
                   <label htmlFor="homePremium1000" className="text-sm font-medium text-gray-700">Annual Premium ($1,000 deductible)</label>
-                  <input id="homePremium1000" type="number" value={inputs.homePremium1000} onChange={(e) => handleInputChange('homePremium1000', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="homePremium1000" type="number" value={inputs.homePremium1000} onChange={(e) => handleInputChange('homePremium1000', e.target.value)} aria-invalid={!!validation.errors.homePremium1000} aria-describedby={validation.errors.homePremium1000 ? 'homePremium1000-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="homePremium1000-error" message={validation.errors.homePremium1000} />
                 </div>
                 <div>
                   <label htmlFor="homePremium5000" className="text-sm font-medium text-gray-700">Annual Premium ($5,000 deductible)</label>
-                  <input id="homePremium5000" type="number" value={inputs.homePremium5000} onChange={(e) => handleInputChange('homePremium5000', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="homePremium5000" type="number" value={inputs.homePremium5000} onChange={(e) => handleInputChange('homePremium5000', e.target.value)} aria-invalid={!!validation.errors.homePremium5000} aria-describedby={validation.errors.homePremium5000 ? 'homePremium5000-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="homePremium5000-error" message={validation.errors.homePremium5000} />
                 </div>
                 <div>
                   <label htmlFor="homeInflation" className="text-sm font-medium text-gray-700">Premium Inflation Rate (%)</label>
-                  <input id="homeInflation" type="number" step="0.1" value={inputs.homeInflation} onChange={(e) => handleInputChange('homeInflation', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="homeInflation" type="number" step="0.1" value={inputs.homeInflation} onChange={(e) => handleInputChange('homeInflation', e.target.value)} aria-invalid={!!validation.errors.homeInflation} aria-describedby={validation.errors.homeInflation ? 'homeInflation-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="homeInflation-error" message={validation.errors.homeInflation} />
                 </div>
                 <div>
                   <label htmlFor="homeCurrentDeductible" className="text-sm font-medium text-gray-700">Current Deductible</label>
@@ -127,11 +144,13 @@ const InsuranceOptimizer: React.FC = () => {
               <div className="space-y-3">
                 <div>
                   <label htmlFor="currentReserve" className="text-sm font-medium text-gray-700">Current Reserve Balance ($)</label>
-                  <input id="currentReserve" type="number" value={inputs.currentReserve} onChange={(e) => handleInputChange('currentReserve', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="currentReserve" type="number" value={inputs.currentReserve} onChange={(e) => handleInputChange('currentReserve', e.target.value)} aria-invalid={!!validation.errors.currentReserve} aria-describedby={validation.errors.currentReserve ? 'currentReserve-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="currentReserve-error" message={validation.errors.currentReserve} />
                 </div>
                 <div>
                   <label htmlFor="reserveReturn" className="text-sm font-medium text-gray-700">Expected Annual Return (%)</label>
-                  <input id="reserveReturn" type="number" step="0.1" value={inputs.reserveReturn} onChange={(e) => handleInputChange('reserveReturn', e.target.value)} className="w-full p-2 border rounded mt-1" />
+                  <input id="reserveReturn" type="number" step="0.1" value={inputs.reserveReturn} onChange={(e) => handleInputChange('reserveReturn', e.target.value)} aria-invalid={!!validation.errors.reserveReturn} aria-describedby={validation.errors.reserveReturn ? 'reserveReturn-error' : undefined} className="w-full p-2 border rounded mt-1" />
+                  <FieldError id="reserveReturn-error" message={validation.errors.reserveReturn} />
                 </div>
                 <div>
                   <label htmlFor="reserveContribution" className="text-sm font-medium text-gray-700">Annual Contribution ($)</label>
@@ -139,7 +158,8 @@ const InsuranceOptimizer: React.FC = () => {
                 </div>
                 <div>
                   <label htmlFor="years" className="text-sm font-medium text-gray-700">Years to Project</label>
-                  <input id="years" type="number" value={inputs.years} onChange={(e) => handleInputChange('years', e.target.value)} className="w-full p-2 border rounded mt-1" min={1} max={50} />
+                  <input id="years" type="number" value={inputs.years} onChange={(e) => handleInputChange('years', e.target.value)} aria-invalid={!!validation.errors.years} aria-describedby={validation.errors.years ? 'years-error' : undefined} className="w-full p-2 border rounded mt-1" min={1} max={50} />
+                  <FieldError id="years-error" message={validation.errors.years} />
                 </div>
                 <div className="bg-purple-200 p-3 rounded mt-3">
                   <div className="flex items-start gap-2">
