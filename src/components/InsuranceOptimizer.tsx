@@ -1,9 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { Shield, TrendingUp, DollarSign, AlertCircle } from 'lucide-react';
 import { Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ComposedChart, ResponsiveContainer } from 'recharts';
+import { calculateProjection } from '../lib/projection';
+import type { ProjectionInputs, ProjectionRow } from '../lib/types';
 
 const InsuranceOptimizer: React.FC = () => {
-  const [inputs, setInputs] = useState<any>({
+  const [inputs, setInputs] = useState<ProjectionInputs>({
     autoPremium250: 1900,
     autoPremium500: 1473,
     autoPremium1000: 1140,
@@ -23,88 +25,16 @@ const InsuranceOptimizer: React.FC = () => {
     years: 30
   });
 
-  const handleInputChange = (field: string, value: any) => {
-    setInputs((prev: any) => ({ ...prev, [field]: parseFloat(value) || 0 }));
+  const handleInputChange = (field: keyof ProjectionInputs, value: string) => {
+    setInputs((prev) => ({ ...prev, [field]: parseFloat(value) || 0 }));
   };
 
-  const calculations = useMemo(() => {
-    const results: any[] = [];
-    let reserve = inputs.currentReserve;
-    let autoDeductible = inputs.autoCurrentDeductible;
-    let homeDeductible = inputs.homeCurrentDeductible;
-
-    const autoTiers = [250, 500, 1000];
-    const homeTiers = [500, 1000, 5000];
-
-    const currentAutoBasePremium = inputs.autoCurrentDeductible === 250 ? inputs.autoPremium250 : 
-                                   inputs.autoCurrentDeductible === 500 ? inputs.autoPremium500 : inputs.autoPremium1000;
-    const currentHomeBasePremium = inputs.homeCurrentDeductible === 500 ? inputs.homePremium500 : 
-                                   inputs.homeCurrentDeductible === 1000 ? inputs.homePremium1000 : inputs.homePremium5000;
-
-    for (let year = 1; year <= inputs.years; year++) {
-      const autoInflationFactor = Math.pow(1 + inputs.autoInflation / 100, year - 1);
-      const homeInflationFactor = Math.pow(1 + inputs.homeInflation / 100, year - 1);
-
-      const autoPremiums: any = {
-        250: inputs.autoPremium250 * autoInflationFactor,
-        500: inputs.autoPremium500 * autoInflationFactor,
-        1000: inputs.autoPremium1000 * autoInflationFactor
-      };
-
-      const homePremiums: any = {
-        500: inputs.homePremium500 * homeInflationFactor,
-        1000: inputs.homePremium1000 * homeInflationFactor,
-        5000: inputs.homePremium5000 * homeInflationFactor
-      };
-
-      const currentStrategyPremium = (currentAutoBasePremium * autoInflationFactor) + (currentHomeBasePremium * homeInflationFactor);
-
-      const autoIndex = autoTiers.indexOf(autoDeductible);
-      if (autoIndex < autoTiers.length - 1 && reserve >= autoTiers[autoIndex + 1]) {
-        autoDeductible = autoTiers[autoIndex + 1];
-      }
-
-      const homeIndex = homeTiers.indexOf(homeDeductible);
-      if (homeIndex < homeTiers.length - 1 && reserve >= homeTiers[homeIndex + 1]) {
-        homeDeductible = homeTiers[homeIndex + 1];
-      }
-
-      const autoCurrentPremium = autoPremiums[autoDeductible];
-      const homeCurrentPremium = homePremiums[homeDeductible];
-      const totalPremium = autoCurrentPremium + homeCurrentPremium;
-
-      const recapturedPremium = currentStrategyPremium - totalPremium;
-
-      const beginningReserve = reserve;
-      reserve += recapturedPremium + inputs.reserveContribution;
-      const reserveEarnings = reserve * (inputs.reserveReturn / 100);
-      reserve += reserveEarnings;
-
-      results.push({
-        year,
-        autoDeductible,
-        homeDeductible,
-        autoPremiums,
-        homePremiums,
-        autoCurrentPremium,
-        homeCurrentPremium,
-        proposedPremium: totalPremium,
-        currentPremium: currentStrategyPremium,
-        recapturedPremium,
-        beginningReserve,
-        reserveEarnings,
-        smartInsuredReserve: reserve,
-        cumulativeSavings: results.length > 0 ? results[results.length - 1].cumulativeSavings + recapturedPremium : recapturedPremium
-      });
-    }
-
-    return results;
-  }, [inputs]);
+  const calculations = useMemo<ProjectionRow[]>(() => calculateProjection(inputs), [inputs]);
 
   const finalYear = calculations[calculations.length - 1];
   const totalSaved = finalYear?.cumulativeSavings || 0;
 
-  const chartData = calculations.map((row: any) => ({
+  const chartData = calculations.map((row) => ({
     year: row.year,
     Proposed: row.proposedPremium,
     'Recaptured Premium': row.recapturedPremium,
