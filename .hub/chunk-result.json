@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added src/lib/validation.ts with validateProjectionInputs, wired inline FieldError into InsuranceOptimizer.tsx, added tests/validation.test.ts (5/5 pass, npm test green)."}
+{"status":"done","notes":"Added scenarios.ts (save/load/delete/exportJson), ScenarioPanel component mounted below input grid, and scenarios.test.ts; 26 tests pass."}

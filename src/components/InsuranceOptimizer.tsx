@@ -3,6 +3,7 @@ import { Shield, TrendingUp, DollarSign, AlertCircle } from 'lucide-react';
 import { Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ComposedChart, ResponsiveContainer } from 'recharts';
 import { calculateProjection } from '../lib/projection';
 import { validateProjectionInputs } from '../lib/validation';
+import ScenarioPanel from './ScenarioPanel';
 import type { ProjectionInputs, ProjectionRow } from '../lib/types';
 
 const FieldError: React.FC<{ id: string; message?: string }> = ({ id, message }) =>
@@ -170,6 +171,8 @@ const InsuranceOptimizer: React.FC = () => {
               </div>
             </div>
           </div>
+
+          <ScenarioPanel currentInputs={inputs} onLoad={setInputs} />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" aria-live="polite">
             <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-4 rounded-lg shadow-lg">
