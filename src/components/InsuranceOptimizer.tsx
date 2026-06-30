@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Shield, TrendingUp, DollarSign, AlertCircle } from 'lucide-react';
 import { Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ComposedChart, ResponsiveContainer } from 'recharts';
 import { calculateProjection } from '../lib/projection';
+import { prefersReducedMotion } from '../lib/motion';
 import { validateProjectionInputs } from '../lib/validation';
 import ScenarioPanel from './ScenarioPanel';
 import ProjectionTable from './ProjectionTable';
@@ -45,6 +46,7 @@ const InsuranceOptimizer: React.FC = () => {
 
   const finalYear = calculations[calculations.length - 1];
   const totalSaved = finalYear?.cumulativeSavings || 0;
+  const isAnimationActive = !prefersReducedMotion();
 
   const chartData = calculations.map((row) => ({
     year: row.year,
@@ -221,10 +223,10 @@ const InsuranceOptimizer: React.FC = () => {
                 <YAxis yAxisId="right" orientation="right" label={{ value: 'Reserve Balance ($)', angle: 90, position: 'insideRight' }} />
                 <Tooltip formatter={(value: any) => `${Number(value).toLocaleString('en-US', {maximumFractionDigits: 0})}`} />
                 <Legend />
-                <Bar yAxisId="left" dataKey="Proposed" stackId="a" fill="#fbbf24" />
-                <Bar yAxisId="left" dataKey="Recaptured Premium" stackId="a" fill="#86efac" />
-                <Line yAxisId="right" type="monotone" dataKey="Smart Insured Reserve" stroke="#6b7280" strokeWidth={2} dot={false} />
-                <Line yAxisId="left" type="monotone" dataKey="Current" stroke="#1e3a8a" strokeWidth={2} dot={false} />
+                <Bar yAxisId="left" dataKey="Proposed" stackId="a" fill="#fbbf24" isAnimationActive={isAnimationActive} />
+                <Bar yAxisId="left" dataKey="Recaptured Premium" stackId="a" fill="#86efac" isAnimationActive={isAnimationActive} />
+                <Line yAxisId="right" type="monotone" dataKey="Smart Insured Reserve" stroke="#6b7280" strokeWidth={2} dot={false} isAnimationActive={isAnimationActive} />
+                <Line yAxisId="left" type="monotone" dataKey="Current" stroke="#1e3a8a" strokeWidth={2} dot={false} isAnimationActive={isAnimationActive} />
               </ComposedChart>
             </ResponsiveContainer>
             </div>
