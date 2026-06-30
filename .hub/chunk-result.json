@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added privacy policy page and jsdom coverage for heading and no-data statement."}
+{"status":"done","notes":"Added WebApplication JSON-LD helper, rendered it on the home page, and covered serialization with Jest."}
