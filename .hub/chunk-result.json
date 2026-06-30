@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added reduced-motion helper, wired Recharts animations to it, and covered matchMedia behavior."}
+{"status":"done","notes":"Added ErrorBoundary logging, fallback report guidance, and jsdom coverage."}

@@ -17,6 +17,10 @@ export class ErrorBoundary extends React.Component<
     return { hasError: true };
   }
 
+  componentDidCatch(error: Error, info: React.ErrorInfo): void {
+    console.error('ErrorBoundary caught:', error, info);
+  }
+
   render() {
     if (this.state.hasError) {
       return (
@@ -24,6 +28,7 @@ export class ErrorBoundary extends React.Component<
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-800 mb-2">Something went wrong</h1>
             <p className="text-gray-600 mb-4">An unexpected error occurred. Please refresh the page to try again.</p>
+            <p className="text-gray-600 mb-4">If this keeps happening, please report the issue.</p>
             <button
               onClick={() => this.setState({ hasError: false })}
               className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
