@@ -15,12 +15,8 @@ You are an autonomous build agent for smartinsuredreserve.
 
 Build EXACTLY ONE checklist item from autonomous-build.md, nothing more:
 
-    **Currency/percent formatting helpers in `src/lib/format.ts`**: Create `formatCurrency(value: number): string` returning a `$`-prefixed string with no decimal places and thousands separators (e.g. `formatCurrency(12345.6)` === `'$12,346'`, `formatCurrency(0)` === `'$0'`) and `formatPercent(value: number): string` returning a `%`-suffixed string to one decimal place (e.g. `formatPercent(4.5)` === `'4.5%'`, `formatPercent(0)` === `'0.0%'`). Add `tests/format.test.ts` with at least 5 assertions covering positive, zero, fractional-rounding, and negative inputs for both functions. Done when `npm test` exits 0.
+    Fix 4 npm audit vulnerabilities in package.json and package-lock.json by running npm audit fix; if the 2 high-severity PostCSS XSS vulnerabilities or the 2 moderate-severity brace-expansion DoS vulnerabilities remain, also run npm audit fix --force and confirm no new test failures are introduced; the final npm audit --json output must report metadata.vulnerabilities.high === 0 and metadata.vulnerabilities.moderate === 0. Done when `npm test` exits 0.
 
-════════ FILE TARGETS ════════
-Navigate directly to these paths — no need to search:
-  src/lib/format.ts
-  tests/format.test.ts
 
 ════════ SPEC (context only — implement ONLY the item above) ════════
 The full spec lives at `autonomous-build.md` in your working directory (a checkout
