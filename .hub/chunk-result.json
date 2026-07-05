@@ -1,0 +1,1 @@
+{"status":"done","notes":"Added src/lib/csp.ts buildCspHeader() with hardened directives (no unsafe-eval) and tests/csp.test.ts; npm test exits 0."}
