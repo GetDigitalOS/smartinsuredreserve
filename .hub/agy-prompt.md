@@ -15,7 +15,7 @@ You are an autonomous build agent for smartinsuredreserve.
 
 Build EXACTLY ONE checklist item from autonomous-build.md, nothing more:
 
-    Fix 4 npm audit vulnerabilities in package.json and package-lock.json by running npm audit fix; if the 2 high-severity PostCSS XSS vulnerabilities or the 2 moderate-severity brace-expansion DoS vulnerabilities remain, also run npm audit fix --force and confirm no new test failures are introduced; the final npm audit --json output must report metadata.vulnerabilities.high === 0 and metadata.vulnerabilities.moderate === 0. Done when `npm test` exits 0.
+    Remove the evaluateExpression function from src/lib/calculator.ts (the function that constructs a Function() object, currently at line 19) and any re-export of it; delete or rewrite every assertion in tests/calculator.test.ts that imports or invokes evaluateExpression; after editing, grep -n "evaluateExpression" src/lib/calculator.ts must return no output and grep -n "new Function\b\|Function(" src/lib/calculator.ts must return no output. Done when `npm test` exits 0.
 
 
 ════════ SPEC (context only — implement ONLY the item above) ════════
