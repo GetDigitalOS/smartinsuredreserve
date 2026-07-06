@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added buildSocialMetaTags() to src/lib/seo.ts and tests/social-meta.test.ts; all 99 tests pass"}
+{"status":"done","notes":"Added buildSocialMetaTags import and .map() render in pages/index.tsx; added tests/index-social-meta.test.ts asserting source contains buildSocialMetaTags, .map(, and property"}
