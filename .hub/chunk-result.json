@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added aria-hidden=\"true\" to all 9 decorative lucide-react icons in InsuranceOptimizer.tsx and added icon-accessibility test asserting ≥9 occurrences and no missing aria-hidden"}
+{"status":"done","notes":"Added buildSocialMetaTags() to src/lib/seo.ts and tests/social-meta.test.ts; all 99 tests pass"}
