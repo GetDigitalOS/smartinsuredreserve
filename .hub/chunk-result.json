@@ -1,1 +1,1 @@
-{"status":"done","notes":"Created public/robots.txt and tests/robots.test.ts; all 86 tests pass"}
+{"status":"done","notes":"Created public/sitemap.xml with urlset and canonical URL, added tests/sitemap.test.ts with 3 assertions; all 89 tests pass"}
