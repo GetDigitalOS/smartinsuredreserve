@@ -15,7 +15,7 @@ You are an autonomous build agent for smartinsuredreserve.
 
 Build EXACTLY ONE checklist item from autonomous-build.md, nothing more:
 
-    Remove the evaluateExpression function from src/lib/calculator.ts (the function that constructs a Function() object, currently at line 19) and any re-export of it; delete or rewrite every assertion in tests/calculator.test.ts that imports or invokes evaluateExpression; after editing, grep -n "evaluateExpression" src/lib/calculator.ts must return no output and grep -n "new Function\b\|Function(" src/lib/calculator.ts must return no output. Done when `npm test` exits 0.
+    Create src/lib/observability.ts exporting captureError(error: Error, context?: Record<string, unknown>): void that calls console.error('[observability]', error, context ?? {}); add tests/observability.test.ts (with @jest-environment jsdom docblock) asserting: typeof captureError === 'function', calling captureError(new Error('boom')) invokes a jest.spyOn(console, 'error') spy at least once, the spy's first call receives '[observability]' as its first argument, and calling captureError(new Error('x'), { key: 'val' }) passes an object matching { key: 'val' } as the third argument to console.error. Done when `npm test` exits 0.
 
 
 ════════ SPEC (context only — implement ONLY the item above) ════════

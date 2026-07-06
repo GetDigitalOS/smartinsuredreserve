@@ -1,1 +1,0 @@
-{"status":"done","notes":"Added public/_headers (/* block with CSP verbatim from buildCspHeader, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) and tests/headers.test.ts; npm test passes."}
