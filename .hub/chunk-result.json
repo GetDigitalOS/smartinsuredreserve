@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added NumberField component and 4 passing tests covering label association, onChange, error display, and no-error case"}
+{"status":"done","notes":"Added aria-hidden=\"true\" to all 9 decorative lucide-react icons in InsuranceOptimizer.tsx and added icon-accessibility test asserting ≥9 occurrences and no missing aria-hidden"}

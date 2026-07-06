@@ -61,7 +61,7 @@ const InsuranceOptimizer: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="bg-white rounded-xl shadow-xl p-4 sm:p-8 mb-6">
           <div className="flex items-center gap-3 mb-2">
-            <Shield className="w-8 h-8 text-indigo-600" />
+            <Shield aria-hidden="true" className="w-8 h-8 text-indigo-600" />
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Smart Insurance Deductible Optimizer</h1>
           </div>
           <p className="text-gray-600 mb-6 text-sm sm:text-base">Build your self-insurance reserve fund and optimize your deductibles over time</p>
@@ -69,7 +69,7 @@ const InsuranceOptimizer: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg">
               <h3 className="font-semibold text-lg mb-3 text-blue-900 flex items-center gap-2">
-                <Shield className="w-5 h-5" />
+                <Shield aria-hidden="true" className="w-5 h-5" />
                 Auto Insurance
               </h3>
               <div className="space-y-3">
@@ -106,7 +106,7 @@ const InsuranceOptimizer: React.FC = () => {
 
             <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg">
               <h3 className="font-semibold text-lg mb-3 text-green-900 flex items-center gap-2">
-                <Shield className="w-5 h-5" />
+                <Shield aria-hidden="true" className="w-5 h-5" />
                 Home Insurance
               </h3>
               <div className="space-y-3">
@@ -143,7 +143,7 @@ const InsuranceOptimizer: React.FC = () => {
 
             <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg">
               <h3 className="font-semibold text-lg mb-3 text-purple-900 flex items-center gap-2">
-                <DollarSign className="w-5 h-5" />
+                <DollarSign aria-hidden="true" className="w-5 h-5" />
                 Reserve Strategy
               </h3>
               <div className="space-y-3">
@@ -168,7 +168,7 @@ const InsuranceOptimizer: React.FC = () => {
                 </div>
                 <div className="bg-purple-200 p-3 rounded mt-3">
                   <div className="flex items-start gap-2">
-                    <AlertCircle className="w-5 h-5 text-purple-700 flex-shrink-0 mt-0.5" />
+                    <AlertCircle aria-hidden="true" className="w-5 h-5 text-purple-700 flex-shrink-0 mt-0.5" />
                     <p className="text-xs text-purple-900">Premium savings are automatically redirected to your reserve fund</p>
                   </div>
                 </div>
@@ -181,7 +181,7 @@ const InsuranceOptimizer: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" aria-live="polite">
             <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-4 rounded-lg shadow-lg">
               <div className="flex items-center gap-2 mb-1">
-                <DollarSign className="w-5 h-5" />
+                <DollarSign aria-hidden="true" className="w-5 h-5" />
                 <h4 className="font-semibold text-sm">Final Reserve Balance</h4>
               </div>
               <p className="text-3xl font-bold">${finalYear?.smartInsuredReserve.toLocaleString('en-US', {maximumFractionDigits: 0})}</p>
@@ -189,7 +189,7 @@ const InsuranceOptimizer: React.FC = () => {
 
             <div className="bg-gradient-to-br from-green-500 to-green-600 text-white p-4 rounded-lg shadow-lg">
               <div className="flex items-center gap-2 mb-1">
-                <TrendingUp className="w-5 h-5" />
+                <TrendingUp aria-hidden="true" className="w-5 h-5" />
                 <h4 className="font-semibold text-sm">Total Savings (Year {inputs.years})</h4>
               </div>
               <p className="text-3xl font-bold">${totalSaved.toLocaleString('en-US', {maximumFractionDigits: 0})}</p>
@@ -197,7 +197,7 @@ const InsuranceOptimizer: React.FC = () => {
 
             <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-4 rounded-lg shadow-lg">
               <div className="flex items-center gap-2 mb-1">
-                <Shield className="w-5 h-5" />
+                <Shield aria-hidden="true" className="w-5 h-5" />
                 <h4 className="font-semibold text-sm">Final Auto Deductible</h4>
               </div>
               <p className="text-3xl font-bold">${finalYear?.autoDeductible.toLocaleString()}</p>
@@ -205,7 +205,7 @@ const InsuranceOptimizer: React.FC = () => {
 
             <div className="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-4 rounded-lg shadow-lg">
               <div className="flex items-center gap-2 mb-1">
-                <Shield className="w-5 h-5" />
+                <Shield aria-hidden="true" className="w-5 h-5" />
                 <h4 className="font-semibold text-sm">Final Home Deductible</h4>
               </div>
               <p className="text-3xl font-bold">${finalYear?.homeDeductible.toLocaleString()}</p>
