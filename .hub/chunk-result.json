@@ -1,1 +1,1 @@
-{"status":"done","notes":"Add debounce<T> utility in src/lib/debounce.ts with 4-assertion test suite using jest.useFakeTimers()"}
+{"status":"done","notes":"Added prefers-reduced-motion media block to styles/globals.css and tests/globals-motion.test.ts; all 83 tests pass"}
