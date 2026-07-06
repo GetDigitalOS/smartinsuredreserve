@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://smartinsuredreserve.pages.dev/sitemap.xml

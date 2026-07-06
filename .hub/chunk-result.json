@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added prefers-reduced-motion media block to styles/globals.css and tests/globals-motion.test.ts; all 83 tests pass"}
+{"status":"done","notes":"Created public/robots.txt and tests/robots.test.ts; all 86 tests pass"}
