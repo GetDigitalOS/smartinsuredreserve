@@ -1,3 +1,7 @@
+export function buildCanonicalUrl(): string {
+  return 'https://smartinsuredreserve.pages.dev/';
+}
+
 export function buildSocialMetaTags(): Array<{ name?: string; property?: string; content: string }> {
   return [
     { property: 'og:image', content: 'https://smartinsuredreserve.pages.dev/og-image.png' },
