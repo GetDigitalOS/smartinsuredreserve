@@ -1,1 +1,1 @@
-{"status":"done","notes":"Add buildCanonicalUrl() to src/lib/seo.ts and tests/seo-canonical.test.ts; all 105 tests pass"}
+{"status":"done","notes":"Added canonical link rendering on the index page with source-level coverage."}

@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { buildSocialMetaTags, buildWebApplicationJsonLd } from '../src/lib/seo';
+import { buildCanonicalUrl, buildSocialMetaTags, buildWebApplicationJsonLd } from '../src/lib/seo';
 
 const InsuranceOptimizer = dynamic(() => import('../src/components/InsuranceOptimizer'), { ssr: false });
 
@@ -12,6 +12,7 @@ export default function Home() {
     <>
       <Head>
         <title>Smart Insurance Deductible Optimizer | SmartInsuredReserve</title>
+        <link rel="canonical" href={buildCanonicalUrl()} />
         <meta name="description" content="Build your self-insurance reserve fund and optimize your deductibles over time. Calculate required reserves based on policy parameters and risk factors." />
         <meta property="og:title" content="Smart Insurance Deductible Optimizer" />
         {socialMetaTags.map((entry) => (
