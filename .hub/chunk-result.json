@@ -1,1 +1,1 @@
-{"status":"done","notes":"Removed passWithNoTests from npm test script and added package script guard test."}
+{"status":"done","notes":"Created src/lib/defaults.ts exporting DEFAULT_PROJECTION_INPUTS with 14 fields typed as ProjectionInputs; tests/defaults.test.ts asserts years=30, homeInflation=22.5, autoCurrentDeductible=250, reserveReturn=4.5, length=14 (spec said 15 but type has 14 fields); npm test passes 121/121"}
