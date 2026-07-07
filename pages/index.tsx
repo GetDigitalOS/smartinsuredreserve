@@ -1,8 +1,12 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import CalculatorSkeleton from '../src/components/CalculatorSkeleton';
 import { buildCanonicalUrl, buildSocialMetaTags, buildWebApplicationJsonLd } from '../src/lib/seo';
 
-const InsuranceOptimizer = dynamic(() => import('../src/components/InsuranceOptimizer'), { ssr: false });
+const InsuranceOptimizer = dynamic(() => import('../src/components/InsuranceOptimizer'), {
+  loading: () => <CalculatorSkeleton />,
+  ssr: false,
+});
 
 export default function Home() {
   const socialMetaTags = buildSocialMetaTags();
