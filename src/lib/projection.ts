@@ -1,7 +1,5 @@
 import type { ProjectionInputs, ProjectionRow } from './types';
-
-const AUTO_TIERS: number[] = [250, 500, 1000];
-const HOME_TIERS: number[] = [500, 1000, 5000];
+import { AUTO_DEDUCTIBLE_TIERS, HOME_DEDUCTIBLE_TIERS, nextEligibleTier } from './deductibleTiers';
 
 function pickAutoBasePremium(inputs: ProjectionInputs): number {
   if (inputs.autoCurrentDeductible === 250) return inputs.autoPremium250;
@@ -44,15 +42,8 @@ export function calculateProjection(inputs: ProjectionInputs): ProjectionRow[] {
       currentAutoBasePremium * autoInflationFactor +
       currentHomeBasePremium * homeInflationFactor;
 
-    const autoIndex = AUTO_TIERS.indexOf(autoDeductible);
-    if (autoIndex >= 0 && autoIndex < AUTO_TIERS.length - 1 && reserve >= AUTO_TIERS[autoIndex + 1]) {
-      autoDeductible = AUTO_TIERS[autoIndex + 1];
-    }
-
-    const homeIndex = HOME_TIERS.indexOf(homeDeductible);
-    if (homeIndex >= 0 && homeIndex < HOME_TIERS.length - 1 && reserve >= HOME_TIERS[homeIndex + 1]) {
-      homeDeductible = HOME_TIERS[homeIndex + 1];
-    }
+    autoDeductible = nextEligibleTier(autoDeductible, reserve, AUTO_DEDUCTIBLE_TIERS);
+    homeDeductible = nextEligibleTier(homeDeductible, reserve, HOME_DEDUCTIBLE_TIERS);
 
     const autoCurrentPremium = autoPremiums[autoDeductible];
     const homeCurrentPremium = homePremiums[homeDeductible];
