@@ -5,3 +5,10 @@ node_modules/
 
 # Claude Code
 .claude/settings.local.json
+
+# Build-loop ephemeral scratch — written to the tree, deleted by the loop,
+# never read back from a commit. Tracking these resurrects them (ADR-034).
+.hub/spec-draft.md
+.hub/auto-gen.md
+.hub/spec-doctor-proposal.json
+.hub/agy-prompt.md
