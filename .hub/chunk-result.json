@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added productionBrowserSourceMaps: true to nextConfig and tests/source-maps.test.ts asserting the substring; npm test exits 0 (33 suites, 126 tests)"}
+{"status":"done","notes":"Created src/lib/messages.ts with UI_MESSAGES object and tests/messages.test.ts; all 132 tests pass"}
