@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added deductibleTiers.ts with AUTO/HOME_DEDUCTIBLE_TIERS and nextEligibleTier; all 4 assertions pass"}
+{"status":"done","notes":"Added productionBrowserSourceMaps: true to nextConfig and tests/source-maps.test.ts asserting the substring; npm test exits 0 (33 suites, 126 tests)"}
