@@ -1,1 +1,1 @@
-{"status":"done","notes":"Wired InsuranceOptimizer to shared defaults and FirstUseNotice with source coverage test."}
+{"status":"done","notes":"ProjectionTable currency cells now use shared formatCurrency helper and source regression test covers it."}

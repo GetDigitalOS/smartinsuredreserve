@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { formatCurrency } from '../lib/format';
 import type { ProjectionRow } from '../lib/types';
 
 interface ProjectionTableProps {
@@ -45,12 +46,12 @@ const ProjectionTable: React.FC<ProjectionTableProps> = ({ rows, pageSize = 10 }
               <tr key={row.year} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                 <td className="p-2 border-b font-semibold">{row.year}</td>
                 <td className="p-2 border-b text-center bg-blue-50">${row.autoDeductible}</td>
-                <td className="p-2 border-b text-center bg-green-50">${row.homeDeductible.toLocaleString()}</td>
-                <td className="p-2 border-b text-right bg-yellow-50">${row.proposedPremium.toLocaleString('en-US', { maximumFractionDigits: 0 })}</td>
-                <td className="p-2 border-b text-right bg-blue-50">${row.currentPremium.toLocaleString('en-US', { maximumFractionDigits: 0 })}</td>
-                <td className="p-2 border-b text-right bg-green-50 font-semibold">${row.recapturedPremium.toLocaleString('en-US', { maximumFractionDigits: 0 })}</td>
-                <td className="p-2 border-b text-right bg-purple-50">${row.beginningReserve.toLocaleString('en-US', { maximumFractionDigits: 0 })}</td>
-                <td className="p-2 border-b text-right bg-purple-50 font-semibold">${row.smartInsuredReserve.toLocaleString('en-US', { maximumFractionDigits: 0 })}</td>
+                <td className="p-2 border-b text-center bg-green-50">{formatCurrency(row.homeDeductible)}</td>
+                <td className="p-2 border-b text-right bg-yellow-50">{formatCurrency(row.proposedPremium)}</td>
+                <td className="p-2 border-b text-right bg-blue-50">{formatCurrency(row.currentPremium)}</td>
+                <td className="p-2 border-b text-right bg-green-50 font-semibold">{formatCurrency(row.recapturedPremium)}</td>
+                <td className="p-2 border-b text-right bg-purple-50">{formatCurrency(row.beginningReserve)}</td>
+                <td className="p-2 border-b text-right bg-purple-50 font-semibold">{formatCurrency(row.smartInsuredReserve)}</td>
               </tr>
             ))}
           </tbody>
