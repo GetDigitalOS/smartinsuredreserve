@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added SelectField component and jsdom test covering label, value, and change forwarding."}
+{"status":"done","notes":"Added InsightsPanel component with reserve insights rendering and test coverage."}
