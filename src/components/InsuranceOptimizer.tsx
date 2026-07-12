@@ -2,11 +2,13 @@ import React, { useState, useMemo } from 'react';
 import { Shield, TrendingUp, DollarSign, AlertCircle } from 'lucide-react';
 import { Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ComposedChart, ResponsiveContainer } from 'recharts';
 import { calculateProjection } from '../lib/projection';
+import { DEFAULT_PROJECTION_INPUTS } from '../lib/defaults';
 import { prefersReducedMotion } from '../lib/motion';
 import { validateProjectionInputs } from '../lib/validation';
 import ScenarioPanel from './ScenarioPanel';
 import ProjectionTable from './ProjectionTable';
 import ReportActions from './ReportActions';
+import FirstUseNotice from './FirstUseNotice';
 import type { ProjectionInputs, ProjectionRow } from '../lib/types';
 
 const FieldError: React.FC<{ id: string; message?: string }> = ({ id, message }) =>
@@ -17,25 +19,7 @@ const FieldError: React.FC<{ id: string; message?: string }> = ({ id, message })
   ) : null;
 
 const InsuranceOptimizer: React.FC = () => {
-  const [inputs, setInputs] = useState<ProjectionInputs>({
-    autoPremium250: 1900,
-    autoPremium500: 1473,
-    autoPremium1000: 1140,
-    autoInflation: 3.0,
-    autoCurrentDeductible: 250,
-
-    homePremium500: 2400,
-    homePremium1000: 1860,
-    homePremium5000: 1440,
-    homeInflation: 22.5,
-    homeCurrentDeductible: 500,
-
-    currentReserve: 0,
-    reserveReturn: 4.5,
-    reserveContribution: 0,
-
-    years: 30
-  });
+  const [inputs, setInputs] = useState<ProjectionInputs>(DEFAULT_PROJECTION_INPUTS);
 
   const handleInputChange = (field: keyof ProjectionInputs, value: string) => {
     setInputs((prev) => ({ ...prev, [field]: parseFloat(value) || 0 }));
@@ -65,6 +49,8 @@ const InsuranceOptimizer: React.FC = () => {
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Smart Insurance Deductible Optimizer</h1>
           </div>
           <p className="text-gray-600 mb-6 text-sm sm:text-base">Build your self-insurance reserve fund and optimize your deductibles over time</p>
+
+          <FirstUseNotice />
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg">
