@@ -9,6 +9,7 @@ import ScenarioPanel from './ScenarioPanel';
 import ProjectionTable from './ProjectionTable';
 import ReportActions from './ReportActions';
 import FirstUseNotice from './FirstUseNotice';
+import InsightsPanel from './InsightsPanel';
 import type { ProjectionInputs, ProjectionRow } from '../lib/types';
 
 const FieldError: React.FC<{ id: string; message?: string }> = ({ id, message }) =>
@@ -226,6 +227,7 @@ const InsuranceOptimizer: React.FC = () => {
 
           <ProjectionTable rows={calculations} />
           <ReportActions rows={calculations} />
+          <InsightsPanel rows={calculations} inputs={inputs} />
 
           <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
             <h4 className="font-semibold text-blue-900 mb-2">How This Strategy Works:</h4>
