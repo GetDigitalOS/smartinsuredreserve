@@ -10,6 +10,7 @@ import ProjectionTable from './ProjectionTable';
 import ReportActions from './ReportActions';
 import FirstUseNotice from './FirstUseNotice';
 import InsightsPanel from './InsightsPanel';
+import SelectField from './SelectField';
 import type { ProjectionInputs, ProjectionRow } from '../lib/types';
 
 const FieldError: React.FC<{ id: string; message?: string }> = ({ id, message }) =>
@@ -80,14 +81,17 @@ const InsuranceOptimizer: React.FC = () => {
                   <input id="autoInflation" type="number" step="0.1" value={inputs.autoInflation} onChange={(e) => handleInputChange('autoInflation', e.target.value)} aria-invalid={!!validation.errors.autoInflation} aria-describedby={validation.errors.autoInflation ? 'autoInflation-error' : undefined} className="w-full p-2 border rounded mt-1" />
                   <FieldError id="autoInflation-error" message={validation.errors.autoInflation} />
                 </div>
-                <div>
-                  <label htmlFor="autoCurrentDeductible" className="text-sm font-medium text-gray-700">Current Deductible</label>
-                  <select id="autoCurrentDeductible" value={inputs.autoCurrentDeductible} onChange={(e) => handleInputChange('autoCurrentDeductible', e.target.value)} className="w-full p-2 border rounded mt-1">
-                    <option value={250}>$250</option>
-                    <option value={500}>$500</option>
-                    <option value={1000}>$1,000</option>
-                  </select>
-                </div>
+                <SelectField
+                  id="autoCurrentDeductible"
+                  label="Current Deductible"
+                  value={inputs.autoCurrentDeductible}
+                  onChange={(value) => handleInputChange('autoCurrentDeductible', value)}
+                  options={[
+                    { value: 250, label: '$250' },
+                    { value: 500, label: '$500' },
+                    { value: 1000, label: '$1,000' }
+                  ]}
+                />
               </div>
             </div>
 
@@ -117,14 +121,17 @@ const InsuranceOptimizer: React.FC = () => {
                   <input id="homeInflation" type="number" step="0.1" value={inputs.homeInflation} onChange={(e) => handleInputChange('homeInflation', e.target.value)} aria-invalid={!!validation.errors.homeInflation} aria-describedby={validation.errors.homeInflation ? 'homeInflation-error' : undefined} className="w-full p-2 border rounded mt-1" />
                   <FieldError id="homeInflation-error" message={validation.errors.homeInflation} />
                 </div>
-                <div>
-                  <label htmlFor="homeCurrentDeductible" className="text-sm font-medium text-gray-700">Current Deductible</label>
-                  <select id="homeCurrentDeductible" value={inputs.homeCurrentDeductible} onChange={(e) => handleInputChange('homeCurrentDeductible', e.target.value)} className="w-full p-2 border rounded mt-1">
-                    <option value={500}>$500</option>
-                    <option value={1000}>$1,000</option>
-                    <option value={5000}>$5,000</option>
-                  </select>
-                </div>
+                <SelectField
+                  id="homeCurrentDeductible"
+                  label="Current Deductible"
+                  value={inputs.homeCurrentDeductible}
+                  onChange={(value) => handleInputChange('homeCurrentDeductible', value)}
+                  options={[
+                    { value: 500, label: '$500' },
+                    { value: 1000, label: '$1,000' },
+                    { value: 5000, label: '$5,000' }
+                  ]}
+                />
               </div>
             </div>
 
