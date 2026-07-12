@@ -1,12 +1,10 @@
 import type { ProjectionInputs } from './types';
+import { AUTO_DEDUCTIBLE_TIERS, HOME_DEDUCTIBLE_TIERS } from './deductibleTiers';
 
 export interface ValidationResult {
   valid: boolean;
   errors: Record<string, string>;
 }
-
-const AUTO_TIERS: number[] = [250, 500, 1000];
-const HOME_TIERS: number[] = [500, 1000, 5000];
 
 const PREMIUM_FIELDS: Array<keyof ProjectionInputs> = [
   'autoPremium250',
@@ -53,10 +51,10 @@ export function validateProjectionInputs(inputs: ProjectionInputs): ValidationRe
     errors.currentReserve = 'Current reserve must be 0 or greater';
   }
 
-  if (!isAscending(AUTO_TIERS)) {
+  if (!isAscending(AUTO_DEDUCTIBLE_TIERS)) {
     errors.autoCurrentDeductible = 'Auto deductible tiers must be in ascending order';
   }
-  if (!isAscending(HOME_TIERS)) {
+  if (!isAscending(HOME_DEDUCTIBLE_TIERS)) {
     errors.homeCurrentDeductible = 'Home deductible tiers must be in ascending order';
   }
 
