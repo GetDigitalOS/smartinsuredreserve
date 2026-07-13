@@ -1,1 +1,1 @@
-{"status":"done","notes":"Replaced deductible selects with SelectField and added source wiring test."}
+{"status":"blocked","reason":"npm test cannot run because the Jest binary is unavailable in this checkout ('jest' is not recognized)."}
