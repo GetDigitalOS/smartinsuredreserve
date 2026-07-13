@@ -1,4 +1,5 @@
 import React from 'react';
+import { reportError } from '../lib/observability';
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -19,6 +20,7 @@ export class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error, info: React.ErrorInfo): void {
     console.error('ErrorBoundary caught:', error, info);
+    reportError(error, { info });
   }
 
   render() {

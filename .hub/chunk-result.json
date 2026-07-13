@@ -1,1 +1,1 @@
-{"status":"done","notes":"wired global error handlers in _app.tsx and added source test"}
+{"status":"blocked","reason":"npm test cannot run because the local checkout has no Jest binary available ('jest' is not recognized)."}
