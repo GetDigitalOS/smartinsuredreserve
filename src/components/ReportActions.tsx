@@ -1,6 +1,7 @@
 import React from 'react';
 import { buildProjectionCsv } from '../lib/csv';
 import type { ProjectionRow } from '../lib/types';
+import { reportError } from '../lib/observability';
 
 interface ReportActionsProps {
   rows: ProjectionRow[];
@@ -8,21 +9,29 @@ interface ReportActionsProps {
 
 const ReportActions: React.FC<ReportActionsProps> = ({ rows }) => {
   const handlePrint = () => {
-    window.print();
+    try {
+      window.print();
+    } catch (err) {
+      reportError(err, { source: 'report-actions' });
+    }
   };
 
   const handleDownload = () => {
-    const csv = buildProjectionCsv(rows);
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
+    try {
+      const csv = buildProjectionCsv(rows);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
 
-    link.href = url;
-    link.download = 'reserve-projection.csv';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
+      link.href = url;
+      link.download = 'reserve-projection.csv';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      reportError(err, { source: 'report-actions' });
+    }
   };
 
   return (
