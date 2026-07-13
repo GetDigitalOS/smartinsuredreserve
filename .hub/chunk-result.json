@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added repo-root _headers (Cloudflare Pages) with CSP/HSTS/X-Frame-Options/etc. and tests/headers-file.test.ts; npm test passes (48 suites)."}
+{"status":"done","notes":"wired global error handlers in _app.tsx and added source test"}
