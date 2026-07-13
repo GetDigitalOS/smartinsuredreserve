@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added HSTS header to next.config.js and tests/hsts-header-source.test.ts; npm test passes (154 tests)."}
+{"status":"done","notes":"Added repo-root _headers (Cloudflare Pages) with CSP/HSTS/X-Frame-Options/etc. and tests/headers-file.test.ts; npm test passes (48 suites)."}
