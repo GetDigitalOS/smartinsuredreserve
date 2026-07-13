@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added tests/headers-parity-source.test.ts asserting HSTS/max-age/X-Frame/X-Content-Type/Referrer-Policy in both next.config.js and _headers and no unsafe-eval in either."}
+{"status":"done","notes":"Created computeReserveMetrics and corresponding tests"}
