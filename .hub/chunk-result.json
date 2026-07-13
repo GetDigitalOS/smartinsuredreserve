@@ -1,1 +1,1 @@
-{"status":"done","notes":"Wrapped handlePrint and handleDownload in try/catch calling reportError from observability; added report-actions-observability-source.test.ts; all 173 tests pass"}
+{"status":"done","notes":"next.config.js already carries the three baseline security headers; added tests/headers-nextconfig-baseline-source.test.ts asserting the source contains them. npm test exits 0 (55 suites, 179 tests)."}
