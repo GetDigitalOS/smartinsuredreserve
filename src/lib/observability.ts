@@ -5,7 +5,13 @@ export interface CapturedError {
   context?: Record<string, unknown>;
 }
 
+export const MAX_CAPTURED_ERRORS = 50;
+
 export const capturedErrors: Array<CapturedError> = [];
+
+export function getCapturedErrors(): ReadonlyArray<{ message: string; stack?: string; context?: Record<string, unknown>; source?: string }> {
+  return [...capturedErrors];
+}
 
 export function reportError(error: unknown, context?: Record<string, unknown>): void {
   const source = context && typeof context.source === 'string' ? context.source : 'report';
@@ -17,7 +23,7 @@ export function reportError(error: unknown, context?: Record<string, unknown>): 
   };
   
   capturedErrors.push(normalized);
-  if (capturedErrors.length > 50) {
+  if (capturedErrors.length > MAX_CAPTURED_ERRORS) {
     capturedErrors.shift();
   }
   
