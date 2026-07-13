@@ -1,1 +1,1 @@
-{"status":"done","notes":"next.config.js script-src already had no unsafe-eval; added tests/csp-no-unsafe-eval-source.test.ts asserting source lacks 'unsafe-eval' and keeps 'script-src'. npm test passes (46 suites, 151 tests)."}
+{"status":"done","notes":"Added HSTS header to next.config.js and tests/hsts-header-source.test.ts; npm test passes (154 tests)."}
