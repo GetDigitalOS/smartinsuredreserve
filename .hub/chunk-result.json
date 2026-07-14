@@ -1,1 +1,1 @@
-{"status":"blocked","reason":"npm test cannot run because Jest is unavailable; npm ci is blocked by the existing eslint@8.51.0 versus eslint-config-next@16.2.1 peer-dependency conflict."}
+{"status":"blocked","reason":"npm test cannot run because Jest is unavailable in this worktree ('jest' is not recognized)."}
