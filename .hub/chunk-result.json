@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added projection comparison utility and tests."}
+{"status":"blocked","reason":"npm test cannot run because the Jest dependency is not installed in this checkout."}
