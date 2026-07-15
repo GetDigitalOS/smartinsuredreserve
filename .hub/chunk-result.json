@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added exported describeComparison formatting reserve and savings deltas with focused test."}
+{"status":"done","notes":"Added computeReserveComposition to src/lib/reserveComposition.ts with full test coverage"}
