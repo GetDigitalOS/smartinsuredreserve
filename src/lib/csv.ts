@@ -1,4 +1,5 @@
 import { computeReserveMetrics } from './metrics';
+import { computeReserveComposition } from './reserveComposition';
 import { computeYearlyReserveDeltas } from './yearlyDelta';
 import type { ProjectionRow } from './types';
 
@@ -53,6 +54,16 @@ export function buildMetricsCsv(rows: ProjectionRow[]): string {
   return [
     'Total Reserve Earnings,Peak Recaptured Premium,Average Annual Savings',
     [totalReserveEarnings, peakRecapturedPremium, averageAnnualSavings].join(','),
+  ].join('\n');
+}
+
+export function buildCompositionCsv(rows: ProjectionRow[]): string {
+  const { earningsTotal, recapturedTotal, finalReserve } =
+    computeReserveComposition(rows);
+
+  return [
+    'Earnings Total,Recaptured Total,Final Reserve',
+    [earningsTotal, recapturedTotal, finalReserve].join(','),
   ].join('\n');
 }
 
