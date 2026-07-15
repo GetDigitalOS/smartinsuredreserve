@@ -1,1 +1,1 @@
-{"status":"blocked","reason":"npm test cannot run because the local Jest binary is unavailable ('jest' is not recognized)."}
+{"status":"done","notes":"Add classifyDeltaTrend to src/lib/deltaTrend.ts with tests covering rising, falling, flat, and empty cases"}
