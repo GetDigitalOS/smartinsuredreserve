@@ -1,1 +1,1 @@
-{"status":"blocked","reason":"npm test cannot run because the local jest executable is missing; dependency installation is outside this checklist item."}
+{"status":"blocked","reason":"npm test cannot run because the local Jest executable is unavailable; node_modules is not installed."}
