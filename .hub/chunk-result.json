@@ -1,1 +1,1 @@
-{"status":"blocked","reason":"Required npm test gate cannot run because Jest is unavailable in this checkout (jest is not recognized)."}
+{"status":"blocked","reason":"Required npm test gate cannot run: Jest is unavailable in this checkout (jest is not recognized)."}
