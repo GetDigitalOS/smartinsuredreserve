@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added and tested deriveGrowthInsight formatting reserve CAGR."}
+{"status":"blocked","reason":"npm test cannot run because the Jest executable is unavailable in this checkout ('jest' is not recognized)."}
