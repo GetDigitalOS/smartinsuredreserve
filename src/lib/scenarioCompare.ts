@@ -1,4 +1,5 @@
 import type { ProjectionRow } from './types';
+import { formatCurrency } from './format';
 
 export function compareProjections(
   base: ProjectionRow[],
@@ -14,4 +15,15 @@ export function compareProjections(
     totalSavingsDelta:
       (altFinal?.cumulativeSavings ?? 0) - (baseFinal?.cumulativeSavings ?? 0),
   };
+}
+
+export function describeComparison(
+  base: ProjectionRow[],
+  alt: ProjectionRow[]
+): string {
+  const delta = compareProjections(base, alt);
+
+  return `Final reserve delta: ${formatCurrency(
+    delta.finalReserveDelta
+  )}; total savings delta: ${formatCurrency(delta.totalSavingsDelta)}`;
 }
