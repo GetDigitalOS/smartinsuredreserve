@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added composition CSV export and regression test."}
+{"status":"blocked","reason":"npm test could not run because jest is not installed or available in the checkout."}
