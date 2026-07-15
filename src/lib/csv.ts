@@ -1,3 +1,4 @@
+import { computeReserveMetrics } from './metrics';
 import type { ProjectionRow } from './types';
 
 const CSV_HEADER =
@@ -42,4 +43,14 @@ export function buildDetailedProjectionCsv(rows: ProjectionRow[]): string {
   );
 
   return [DETAILED_CSV_HEADER, ...lines].join('\n');
+}
+
+export function buildMetricsCsv(rows: ProjectionRow[]): string {
+  const { totalReserveEarnings, peakRecapturedPremium, averageAnnualSavings } =
+    computeReserveMetrics(rows);
+
+  return [
+    'Total Reserve Earnings,Peak Recaptured Premium,Average Annual Savings',
+    [totalReserveEarnings, peakRecapturedPremium, averageAnnualSavings].join(','),
+  ].join('\n');
 }
