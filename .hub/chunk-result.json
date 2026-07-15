@@ -1,1 +1,1 @@
-{"status":"done","notes":"Add classifyDeltaTrend to src/lib/deltaTrend.ts with tests covering rising, falling, flat, and empty cases"}
+{"status":"done","notes":"Added describeReserveProgress and tests for positive, zero-target, and empty-row progress."}
