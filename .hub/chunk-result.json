@@ -1,1 +1,1 @@
-{"status":"done","notes":"Add scenarioSummary.ts composing computeSummaryStats + classifyReserveHealth; test passes"}
+{"status":"blocked","reason":"Required npm test gate cannot run because Jest is unavailable in this checkout (jest is not recognized)."}

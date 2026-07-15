@@ -3,6 +3,7 @@ import { computeSummaryStats } from './summary';
 import { formatCurrency } from './format';
 import { computeReserveMetrics } from './metrics';
 import { classifyReserveHealth } from './reserveHealth';
+import { findReserveMilestones } from './reserveMilestones';
 
 export function deriveInsights(rows: ProjectionRow[], inputs: ProjectionInputs): string[] {
   const stats = computeSummaryStats(rows, inputs);
@@ -31,4 +32,16 @@ export function deriveHealthInsight(rows: ProjectionRow[], inputs: ProjectionInp
   const stats = computeSummaryStats(rows, inputs);
 
   return `Reserve health: ${classifyReserveHealth(stats.reserveCoverageRatio)}`;
+}
+
+export function deriveMilestoneInsights(rows: ProjectionRow[], targets: number[]): string[] {
+  const milestones = findReserveMilestones(rows, targets);
+
+  return targets.map((target) => {
+    const year = milestones[target];
+
+    return year !== null
+      ? `${formatCurrency(target)} reached in year ${year}`
+      : `${formatCurrency(target)} not reached`;
+  });
 }
