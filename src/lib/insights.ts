@@ -5,6 +5,7 @@ import { computeReserveCagr } from './growth';
 import { computeReserveMetrics } from './metrics';
 import { classifyReserveHealth } from './reserveHealth';
 import { findReserveMilestones } from './reserveMilestones';
+import { computeReserveComposition } from './reserveComposition';
 
 export function deriveInsights(rows: ProjectionRow[], inputs: ProjectionInputs): string[] {
   const stats = computeSummaryStats(rows, inputs);
@@ -49,4 +50,10 @@ export function deriveMilestoneInsights(rows: ProjectionRow[], targets: number[]
 
 export function deriveGrowthInsight(rows: ProjectionRow[]): string {
   return `Reserve CAGR: ${formatPercent(computeReserveCagr(rows) * 100)}`;
+}
+
+export function deriveCompositionInsight(rows: ProjectionRow[]): string {
+  const comp = computeReserveComposition(rows);
+
+  return `Reserve earnings: ${formatCurrency(comp.earningsTotal)}; recaptured premium: ${formatCurrency(comp.recapturedTotal)}`;
 }
