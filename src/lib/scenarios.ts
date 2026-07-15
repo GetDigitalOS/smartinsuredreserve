@@ -45,3 +45,36 @@ export function deleteScenario(name: string): void {
 export function exportScenarioAsJson(inputs: ProjectionInputs): string {
   return JSON.stringify(inputs, null, 2);
 }
+
+const projectionInputKeys: (keyof ProjectionInputs)[] = [
+  'autoPremium250',
+  'autoPremium500',
+  'autoPremium1000',
+  'autoInflation',
+  'autoCurrentDeductible',
+  'homePremium500',
+  'homePremium1000',
+  'homePremium5000',
+  'homeInflation',
+  'homeCurrentDeductible',
+  'currentReserve',
+  'reserveReturn',
+  'reserveContribution',
+  'years',
+];
+
+export function importScenarioFromJson(json: string): ProjectionInputs | null {
+  try {
+    const parsed: unknown = JSON.parse(json);
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return null;
+
+    const candidate = parsed as Record<string, unknown>;
+    if (!projectionInputKeys.every((key) => typeof candidate[key] === 'number' && Number.isFinite(candidate[key]))) {
+      return null;
+    }
+
+    return candidate as unknown as ProjectionInputs;
+  } catch {
+    return null;
+  }
+}
