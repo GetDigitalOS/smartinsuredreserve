@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added describeReserveProgress and tests for positive, zero-target, and empty-row progress."}
+{"status":"blocked","reason":"npm test cannot run because the Jest binary is unavailable in this checkout."}
