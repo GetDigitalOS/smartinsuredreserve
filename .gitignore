@@ -12,3 +12,9 @@ node_modules/
 .hub/auto-gen.md
 .hub/spec-doctor-proposal.json
 .hub/agy-prompt.md
+
+# Build caches — regenerated on every build, never meaningful to track;
+# tracking them makes every branch diverge and every loop rebase collide (ADR-052).
+*.tsbuildinfo
+.turbo/
+coverage/
