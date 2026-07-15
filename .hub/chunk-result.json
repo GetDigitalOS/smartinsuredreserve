@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added validated JSON scenario import with round-trip and invalid-input tests."}
+{"status":"blocked","reason":"npm test cannot run because the local jest executable is missing; dependency installation is outside this checklist item."}
