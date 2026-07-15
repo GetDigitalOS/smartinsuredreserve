@@ -1,4 +1,5 @@
 import { computeReserveMetrics } from './metrics';
+import { computeYearlyReserveDeltas } from './yearlyDelta';
 import type { ProjectionRow } from './types';
 
 const CSV_HEADER =
@@ -53,4 +54,12 @@ export function buildMetricsCsv(rows: ProjectionRow[]): string {
     'Total Reserve Earnings,Peak Recaptured Premium,Average Annual Savings',
     [totalReserveEarnings, peakRecapturedPremium, averageAnnualSavings].join(','),
   ].join('\n');
+}
+
+export function buildYearlyDeltaCsv(rows: ProjectionRow[]): string {
+  const lines = computeYearlyReserveDeltas(rows).map((delta, index) =>
+    [index + 1, delta].join(','),
+  );
+
+  return ['Year,Reserve Delta', ...lines].join('\n');
 }
