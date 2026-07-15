@@ -1,6 +1,7 @@
 import { ProjectionRow, ProjectionInputs } from './types';
 import { computeSummaryStats } from './summary';
-import { formatCurrency } from './format';
+import { formatCurrency, formatPercent } from './format';
+import { computeReserveCagr } from './growth';
 import { computeReserveMetrics } from './metrics';
 import { classifyReserveHealth } from './reserveHealth';
 import { findReserveMilestones } from './reserveMilestones';
@@ -44,4 +45,8 @@ export function deriveMilestoneInsights(rows: ProjectionRow[], targets: number[]
       ? `${formatCurrency(target)} reached in year ${year}`
       : `${formatCurrency(target)} not reached`;
   });
+}
+
+export function deriveGrowthInsight(rows: ProjectionRow[]): string {
+  return `Reserve CAGR: ${formatPercent(computeReserveCagr(rows) * 100)}`;
 }
