@@ -1,1 +1,1 @@
-{"status":"blocked","reason":"npm test could not run because jest is not installed or available in the checkout."}
+{"status":"done","notes":"Added reserve target gap calculation and coverage."}
