@@ -1,1 +1,1 @@
-{"status":"blocked","reason":"npm test cannot run because the local checkout has no Jest binary ('jest' is not recognized)."}
+{"status":"blocked","reason":"npm test cannot run because Jest is not installed, and npm ci fails on the repository's existing eslint-config-next/eslint peer-dependency conflict."}
