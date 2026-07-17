@@ -6,6 +6,7 @@ import { computeReserveMetrics } from './metrics';
 import { classifyReserveHealth } from './reserveHealth';
 import { findReserveMilestones } from './reserveMilestones';
 import { computeReserveComposition } from './reserveComposition';
+import { classifyDeltaTrend } from './deltaTrend';
 
 export function deriveInsights(rows: ProjectionRow[], inputs: ProjectionInputs): string[] {
   const stats = computeSummaryStats(rows, inputs);
@@ -56,4 +57,8 @@ export function deriveCompositionInsight(rows: ProjectionRow[]): string {
   const comp = computeReserveComposition(rows);
 
   return `Reserve earnings: ${formatCurrency(comp.earningsTotal)}; recaptured premium: ${formatCurrency(comp.recapturedTotal)}`;
+}
+
+export function deriveTrendInsight(rows: ProjectionRow[]): string {
+  return `Reserve is ${classifyDeltaTrend(rows)}`;
 }
