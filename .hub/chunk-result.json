@@ -1,1 +1,1 @@
-{"status":"done","notes":"Add growth totals CSV export and regression coverage."}
+{"status":"blocked","reason":"npm test cannot run because Jest is not installed, and npm ci is blocked by the existing eslint-config-next@16.2.1 / eslint@8.51.0 peer-dependency conflict outside this chunk's scope."}
