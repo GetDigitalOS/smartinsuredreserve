@@ -7,6 +7,7 @@ import { classifyReserveHealth } from './reserveHealth';
 import { findReserveMilestones } from './reserveMilestones';
 import { computeReserveComposition } from './reserveComposition';
 import { classifyDeltaTrend } from './deltaTrend';
+import { computeReserveTargetGap } from './reserveTargetGap';
 
 export function deriveInsights(rows: ProjectionRow[], inputs: ProjectionInputs): string[] {
   const stats = computeSummaryStats(rows, inputs);
@@ -61,4 +62,8 @@ export function deriveCompositionInsight(rows: ProjectionRow[]): string {
 
 export function deriveTrendInsight(rows: ProjectionRow[]): string {
   return `Reserve is ${classifyDeltaTrend(rows)}`;
+}
+
+export function deriveTargetGapInsight(rows: ProjectionRow[], target: number): string {
+  return `Reserve gap to target: ${formatCurrency(computeReserveTargetGap(rows, target))}`;
 }
