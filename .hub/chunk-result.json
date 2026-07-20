@@ -1,1 +1,1 @@
-{"status":"done","notes":"Add growthTableTotalsCsv: buildGrowthTotalsCsv produces 2-line CSV from summarizeGrowthTable result"}
+{"status":"blocked","reason":"npm test cannot run because the Jest executable is unavailable in this checkout"}
