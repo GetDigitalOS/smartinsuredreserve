@@ -1,1 +1,1 @@
-{"status":"blocked","reason":"npm test cannot run because the local Jest binary is unavailable in this checkout"}
+{"status":"blocked","reason":"npm test cannot run because the checkout lacks the Jest executable ('jest' is not recognized)."}
