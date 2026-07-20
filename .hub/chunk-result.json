@@ -1,1 +1,1 @@
-{"status":"done","notes":"Implemented buildReserveProgressMarkdown and added corresponding tests"}
+{"status":"done","notes":"Implemented describeReserveMilestones label formatter and tests"}
