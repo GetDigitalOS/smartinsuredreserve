@@ -1,1 +1,1 @@
-{"status":"done","notes":"Added reserve composition label formatting and coverage for populated and empty rows."}
+{"status":"done","notes":"add reserveCompositionCsv.ts and test; all 286 tests pass"}
