@@ -1,1 +1,1 @@
-{"status":"blocked","reason":"npm test cannot run because Jest is not installed in this checkout ('jest' is not recognized)."}
+{"status":"done","notes":"Added reserve composition label formatting and coverage for populated and empty rows."}
