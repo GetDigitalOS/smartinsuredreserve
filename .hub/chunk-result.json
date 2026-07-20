@@ -1,1 +1,1 @@
-{"status":"blocked","reason":"npm test cannot run because the local Jest executable is unavailable ('jest' is not recognized)."}
+{"status":"done","notes":"Add growthTableTotalsCsv: buildGrowthTotalsCsv produces 2-line CSV from summarizeGrowthTable result"}
